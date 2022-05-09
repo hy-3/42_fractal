@@ -2,10 +2,10 @@ NAME = fractol
 CC = gcc
 #FLAGS = -Wall -Wextra -Werror
 FLAGS = -framework OpenGL -framework AppKit
-LIBFT_PATH=./lib/libft/
-LIBFT=./lib/libft/libft.a
-MIN_PATH=./lib/minilibx_macos/
-MIN=./lib/minilibx_macos/libmlx.a
+LIBFT_PATH = lib/libft/
+LIBFT = lib/libft/libft.a
+MIN_PATH = lib/minilibx_macos/
+MIN = lib/minilibx_macos/libmlx.a
 SRC = src/main.c
 
 all: $(NAME)
@@ -25,6 +25,6 @@ fclean: clean
 	rm -f ${MIN}
 	rm -f ${NAME}
 
-re: 		fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re
