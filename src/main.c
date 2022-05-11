@@ -106,3 +106,60 @@ int	main(void)
 
 	return (0);
 }
+
+
+/*
+ref:
+ - https://nickdrachman.wordpress.com/2019/09/01/fractals-in-the-complex-plane/
+
+
+ - https://www.codingame.com/playgrounds/2358/how-to-plot-the-mandelbrot-set/mandelbrot-set
+from PIL import Image, ImageDraw
+from mandelbrot import mandelbrot, MAX_ITER
+
+# Image size (pixels)
+WIDTH = 400
+HEIGHT = 500
+
+# Plot window
+RE_START = -2
+RE_END = 1
+IM_START = 2
+IM_END = -2
+
+palette = []
+
+im = Image.new('RGB', (WIDTH, HEIGHT), (0, 0, 0))
+draw = ImageDraw.Draw(im)
+
+res = WIDTH
+adj = 0
+x_start = 0
+y_start = 0
+
+while res / 3 * 4 > HEIGHT:
+	res -= 1
+if HEIGHT > WIDTH:
+    adj = round((HEIGHT - res) / 2)
+    y_start += adj
+    HEIGHT -= adj
+else:
+    adj = round((WIDTH - res) / 2)
+    x_start += adj
+    WIDTH -= adj
+
+for x in range(x_start, WIDTH):
+    for y in range(y_start, HEIGHT):
+        # Convert pixel coordinate to complex number
+        c = complex(RE_START + (x / WIDTH) * (RE_END - RE_START),
+                    IM_START + (y / HEIGHT) * (IM_END - IM_START))
+        # Compute the number of iterations
+        m = mandelbrot(c)
+        # The color depends on the number of iterations
+        color = 255 - int(m * 255 / MAX_ITER)
+        # Plot the point
+        draw.point([x, y], (color, color, color))
+
+im.save('output.png', 'PNG')
+
+*/
