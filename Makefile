@@ -6,7 +6,8 @@ LIBFT_PATH = lib/libft/
 LIBFT = lib/libft/libft.a
 MIN_PATH = lib/minilibx_macos/
 MIN = lib/minilibx_macos/libmlx.a
-SRC = src/main.c
+SRC = src/main.c \
+	  src/mandelbrot.c
 
 all: $(NAME)
 
