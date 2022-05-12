@@ -1,12 +1,26 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define MAX_ITER 100
-# define OUTSIDE_COLOR_1 "0x0000FFFF"
-# define OUTSIDE_COLOR_2 "0x0000FFFF"
 # define WIDTH 800
-# define HEIGHT 300
+# define HEIGHT 800
+# define MAX_ITER 500
+# define INSIDE_COLOR 0x00000000
+# define OUTSIDE_COLOR 0x00FFFFFF
 
-int	mandelbrot(double c_re, double c_im);
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
+typedef struct	s_base
+{
+	void	*mlx;
+	void	*win;
+}	t_base;
+
+void	create_mandelbrot_img(t_data *data);
 
 #endif
