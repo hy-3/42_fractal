@@ -1,8 +1,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 600
+# define HEIGHT 600
 # define MAX_ITER 500
 # define INSIDE_COLOR 0x00000000
 # define OUTSIDE_COLOR 0x00FFFFFF

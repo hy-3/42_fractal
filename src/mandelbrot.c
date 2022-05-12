@@ -1,13 +1,13 @@
 #include "fractol.h"
 
-double	calc_complex_num(double position, double direction)
+double	calc_complex_num(double axis, double direction)
 {
 	double res;
 
 	if (HEIGHT > WIDTH)
-		res = (position - direction / 2) * 4 / WIDTH;
+		res = (axis - direction / 2) * 4 / WIDTH;
 	else
-		res = (position - direction / 2) * 4 / HEIGHT;
+		res = (axis - direction / 2) * 4 / HEIGHT;
 	return (res);
 }
 
