@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 18:04:21 by hiyamamo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "fractol.h"
 
 double	calc_complex_num(double axis, double side, int axis_move, double zoom)
@@ -23,7 +11,7 @@ double	calc_complex_num(double axis, double side, int axis_move, double zoom)
 	return (res);
 }
 
-int	is_mandelbrot(double complex_r, double complex_i)
+int	is_julia(double complex_real, double complex_imagin)
 {
 	double	x;
 	double	y;
@@ -35,8 +23,8 @@ int	is_mandelbrot(double complex_r, double complex_i)
 	n = 0;
 	while ((x * x + y * y) <= 4 && n < (int)MAX_ITER)
 	{
-		x_tmp = x * x - y * y + complex_r;
-		y = 2 * x * y + complex_i;
+		x_tmp = x * x - y * y + complex_real;
+		y = 2 * x * y + complex_imagin;
 		x = x_tmp;
 		n++;
 	}
@@ -59,7 +47,7 @@ void	put_color_on_pixel(t_data *data, double x, double y, int n)
 		my_mlx_pixel_put(data, x, y, OUTSIDE_COLOR);
 }
 
-void	create_mandelbrot_img(t_param *param)
+void	create_julia_img(t_param *param)
 {
 	double	x;
 	double	y;
@@ -68,8 +56,8 @@ void	create_mandelbrot_img(t_param *param)
 	int		n;
 
 	x = 0;
-	complex_r = 0;
-	complex_i = 0;
+	complex_r = -0.5;
+	complex_i = 0.3;
 	while (x < WIDTH)
 	{
 		y = 0;
@@ -77,10 +65,15 @@ void	create_mandelbrot_img(t_param *param)
 		{
 			complex_r = calc_complex_num(x, WIDTH, param->pos_x, param->zoom);
 			complex_i = calc_complex_num(y, HEIGHT, param->pos_y, param->zoom);
-			n = is_mandelbrot(complex_r, complex_i);
+			n = is_julia(complex_r, complex_i);
 			put_color_on_pixel(param->data, x, y, n);
 			y++;
 		}
 		x++;
 	}
 }
+
+
+/*
+ref: https://complex-analysis.com/content/julia_set.html
+*/

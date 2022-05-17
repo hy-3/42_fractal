@@ -6,12 +6,15 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:21 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 15:03:00 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:31:35 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
+#include "../lib/minilibx_opengl_20191021/mlx.h"
+#include "../lib/libft/libft.h"
 
 # define WIDTH 600
 # define HEIGHT 600
@@ -52,6 +55,8 @@ typedef struct s_param
 	int		pos_y;
 }	t_param;
 
+int		key_hook(int keycode, t_param *param);
+int		mouse_hook(int button, int x, int y, t_param *param);
 void	create_mandelbrot_img(t_param *param);
 
 #endif
