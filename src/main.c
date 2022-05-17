@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:40 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 14:46:13 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/17 14:56:12 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int	key_hook(int keycode, t_param *param)
 {
 	if (keycode == ZOOMIN_KEY)
-		param->zoom *= ZOOMIN;
+		param->zoom *= ZOOM_MOVE;
 	if (keycode == ZOOMOUT_KEY)
-		param->zoom *= ZOOMOUT;
+		param->zoom /= ZOOM_MOVE;
 	if (keycode == LEFT_KEY)
 		param->pos_x -= AXIS_MOVE;
 	if (keycode == RIGHT_KEY)
