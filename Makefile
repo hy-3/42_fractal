@@ -4,8 +4,8 @@ CC = gcc
 FLAGS = -framework OpenGL -framework AppKit
 LIBFT_PATH = lib/libft/
 LIBFT = lib/libft/libft.a
-MIN_PATH = lib/minilibx_macos/
-MIN = lib/minilibx_macos/libmlx.a
+MIN_PATH = lib/minilibx_opengl_20191021/
+MIN = lib/minilibx_opengl_20191021/libmlx.a
 SRC = src/main.c \
 	  src/mandelbrot.c
 

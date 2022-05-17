@@ -1,4 +1,4 @@
-#include "../lib/minilibx_macos/mlx.h"
+#include "../lib/minilibx_opengl_20191021/mlx.h"
 #include "fractol.h"
 
 int	main(void)
