@@ -6,11 +6,12 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:40 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 15:09:01 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:12:44 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/minilibx_opengl_20191021/mlx.h"
+#include "../lib/libft/libft.h"
 #include "fractol.h"
 
 int	key_hook(int keycode, t_param *param)
@@ -51,6 +52,8 @@ int	main(int argc, char *argv[])
 	t_data	data;
 	t_param	param;
 
+	if (argc == 1)
+		ft_printf("");
 	param.base = &base;
 	param.data = &data;
 	param.pos_x = 0;

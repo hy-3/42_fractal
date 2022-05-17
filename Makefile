@@ -17,14 +17,14 @@ $(NAME):
 	$(CC) $(SRC) $(LIBFT) $(MIN) $(FLAGS) -o $(NAME)
 
 clean:
-	make clean -C ${LIBFT_PATH}
-	make clean -C ${MIN_PATH}
+	make clean -C $(LIBFT_PATH)
+	make clean -C $(MIN_PATH)
 
 fclean: clean
 	make clean
-	rm -f ${LIBFT}
-	rm -f ${MIN}
-	rm -f ${NAME}
+	rm -f $(LIBFT)
+	rm -f $(MIN)
+	rm -f $(NAME)
 
 re: fclean all
 

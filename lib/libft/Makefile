@@ -38,31 +38,33 @@ PART2_SRC = \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
-MANDATORY_SRC = $(PART1_SRC) $(PART2_SRC)
+SRC_DIR = src
+CONV_DIR = conversion
+UTIL_DIR = util
+FT_PRINTF_SRC = \
+	$(FT_PRINTF_PATH)/$(SRC_DIR)/ft_printf.c \
+	$(FT_PRINTF_PATH)/$(CONV_DIR)/c_conv.c \
+	$(FT_PRINTF_PATH)/$(CONV_DIR)/s_conv.c \
+	$(FT_PRINTF_PATH)/$(CONV_DIR)/p_conv.c \
+	$(FT_PRINTF_PATH)/$(CONV_DIR)/d_i_conv.c \
+	$(FT_PRINTF_PATH)/$(CONV_DIR)/u_conv.c \
+	$(FT_PRINTF_PATH)/$(CONV_DIR)/x_conv.c \
+	$(FT_PRINTF_PATH)/$(UTIL_DIR)/is_char_match.c \
+	$(FT_PRINTF_PATH)/$(UTIL_DIR)/base_ten_power.c \
+	$(FT_PRINTF_PATH)/$(UTIL_DIR)/cust_putnbr_int.c \
+	$(FT_PRINTF_PATH)/$(UTIL_DIR)/cust_putnbr_unsigned_int.c \
+	$(FT_PRINTF_PATH)/$(UTIL_DIR)/cust_putchar.c
+
+MANDATORY_SRC = $(PART1_SRC) $(PART2_SRC) $(FT_PRINTF_SRC)
 MANDATORY_OBJ = $(MANDATORY_SRC:%.c=%.o)
 
-BONUS_SRC = \
-	ft_lstnew_bonus.c \
-	ft_lstadd_front_bonus.c \
-	ft_lstsize_bonus.c \
-	ft_lstlast_bonus.c \
-	ft_lstadd_back_bonus.c \
-	ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c \
-	ft_lstiter_bonus.c \
-	ft_lstmap_bonus.c
-BONUS_OBJ = $(BONUS_SRC:%.c=%.o)
+FT_PRINTF_PATH = ft_printf
+FT_PRINTF = ft_printf/libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJ)
 	@ar -rcs $(NAME) $(MANDATORY_OBJ)
-
-bonus: .bonus
-
-.bonus: $(MANDATORY_OBJ) $(BONUS_OBJ)
-	@touch .bonus
-	@ar -rcs $(NAME) $(MANDATORY_OBJ) $(BONUS_OBJ)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
@@ -75,7 +77,6 @@ fclean: clean
 
 clean:
 	@echo "Deleting object files"
-	@rm -f $(MANDATORY_OBJ) $(BONUS_OBJ)
-	@rm -f .bonus
+	@rm -f $(MANDATORY_OBJ)
 
-.PONHY: all bonus re fclean clean
+.PONHY: all re fclean clean
