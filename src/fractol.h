@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:21 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 14:55:58 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:03:00 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define RIGHT_KEY 124
 # define UP_KEY 126
 # define DOWN_KEY 125
+# define MOUSE_UP_KEY 4
+# define MOUSE_DOWN_KEY 5
 
 typedef struct s_data {
 	void	*img;

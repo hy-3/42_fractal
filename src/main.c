@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:40 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 14:56:12 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:09:01 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,19 @@ int	key_hook(int keycode, t_param *param)
 	return (0);
 }
 
-int	main(void)
+int	mouse_hook(int button, int x, int y, t_param *param)
+{
+	if (button == MOUSE_UP_KEY)
+		param->zoom *= ZOOM_MOVE;
+	if (button == MOUSE_DOWN_KEY)
+		param->zoom /= ZOOM_MOVE;
+	create_mandelbrot_img(param);
+	mlx_put_image_to_window(param->base->mlx, param->base->win, \
+							param->data->img, 0, 0);
+	return (0);
+}
+
+int	main(int argc, char *argv[])
 {
 	t_base	base;
 	t_data	data;
@@ -52,6 +64,7 @@ int	main(void)
 	create_mandelbrot_img(&param);
 	mlx_put_image_to_window(base.mlx, base.win, data.img, 0, 0);
 	mlx_key_hook(base.win, key_hook, &param);
+	mlx_mouse_hook(base.win, mouse_hook, &param);
 	mlx_loop(base.mlx);
 	return (0);
 }
