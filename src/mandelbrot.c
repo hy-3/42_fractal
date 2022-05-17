@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
+/*   Updated: 2022/05/17 14:53:36 by hiyamamo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-double	calc_complex_num(double axis, double direction)
+double	calc_complex_num(double axis, double side, int axis_move, double zoom)
 {
-	double res;
+	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (axis - direction / 2) * 4 / WIDTH;
+		res = (axis - side / 2 + axis_move) * 4 / (WIDTH * zoom);
 	else
-		res = (axis - direction / 2) * 4 / HEIGHT;
+		res = (axis - side / 2 + axis_move) * 4 / (HEIGHT * zoom);
 	return (res);
 }
 
@@ -16,7 +28,7 @@ int	is_mandelbrot(double complex_real, double complex_imagin)
 	double	x;
 	double	y;
 	double	x_tmp;
-	int	n;
+	int		n;
 
 	x = 0;
 	y = 0;
@@ -47,26 +59,26 @@ void	put_color_on_pixel(t_data *data, double x, double y, int n)
 		my_mlx_pixel_put(data, x, y, OUTSIDE_COLOR);
 }
 
-void	create_mandelbrot_img(t_data *data)
+void	create_mandelbrot_img(t_param *param)
 {
-	double x;
-	double y;
-	double complex_real;
-	double complex_imagin;
-	int n;
+	double	x;
+	double	y;
+	double	complex_r;
+	double	complex_i;
+	int		n;
 
 	x = 0;
-	complex_real = 0;
-	complex_imagin = 0;
+	complex_r = 0;
+	complex_i = 0;
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{
-			complex_real = calc_complex_num(x, WIDTH);
-			complex_imagin = calc_complex_num(y, HEIGHT);
-			n = is_mandelbrot(complex_real, complex_imagin);
-			put_color_on_pixel(data, x, y, n);
+			complex_r = calc_complex_num(x, WIDTH, param->pos_x, param->zoom);
+			complex_i = calc_complex_num(y, HEIGHT, param->pos_y, param->zoom);
+			n = is_mandelbrot(complex_r, complex_i);
+			put_color_on_pixel(param->data, x, y, n);
 			y++;
 		}
 		x++;
