@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 			data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, \
 											&data.line_length, &data.endian);
 			create_julia_img(&param);
+			mlx_put_image_to_window(base.mlx, base.win, data.img, 0, 0);
 		}
 		else
 		{

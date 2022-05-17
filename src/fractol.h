@@ -18,7 +18,7 @@
 
 # define WIDTH 600
 # define HEIGHT 600
-# define MAX_ITER 500
+# define MAX_ITER 1000
 # define INSIDE_COLOR 0x00000000
 # define OUTSIDE_COLOR 0x00FFFFFF
 # define AXIS_MOVE 10
@@ -58,5 +58,6 @@ typedef struct s_param
 int		key_hook(int keycode, t_param *param);
 int		mouse_hook(int button, int x, int y, t_param *param);
 void	create_mandelbrot_img(t_param *param);
+void	create_julia_img(t_param *param);
 
 #endif

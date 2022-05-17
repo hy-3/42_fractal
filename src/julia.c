@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-double	calc_complex_num(double axis, double side, int axis_move, double zoom)
+double	j_calc_complex_num(double axis, double side, int axis_move, double zoom)
 {
 	double	res;
 
@@ -11,15 +11,11 @@ double	calc_complex_num(double axis, double side, int axis_move, double zoom)
 	return (res);
 }
 
-int	is_julia(double complex_real, double complex_imagin)
+int	is_julia(double x, double y, double complex_real, double complex_imagin)
 {
-	double	x;
-	double	y;
 	double	x_tmp;
 	int		n;
 
-	x = 0;
-	y = 0;
 	n = 0;
 	while ((x * x + y * y) <= 4 && n < (int)MAX_ITER)
 	{
@@ -31,7 +27,7 @@ int	is_julia(double complex_real, double complex_imagin)
 	return (n);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	j_my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -39,12 +35,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	put_color_on_pixel(t_data *data, double x, double y, int n)
+void	j_put_color_on_pixel(t_data *data, double x, double y, int n)
 {
 	if (n == MAX_ITER)
-		my_mlx_pixel_put(data, x, y, INSIDE_COLOR);
+		j_my_mlx_pixel_put(data, x, y, INSIDE_COLOR);
 	else
-		my_mlx_pixel_put(data, x, y, OUTSIDE_COLOR);
+		j_my_mlx_pixel_put(data, x, y, OUTSIDE_COLOR);
 }
 
 void	create_julia_img(t_param *param)
@@ -56,24 +52,20 @@ void	create_julia_img(t_param *param)
 	int		n;
 
 	x = 0;
-	complex_r = -0.5;
-	complex_i = 0.3;
+	complex_r = 0.318;
+	complex_i = 0.089;
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{
-			complex_r = calc_complex_num(x, WIDTH, param->pos_x, param->zoom);
-			complex_i = calc_complex_num(y, HEIGHT, param->pos_y, param->zoom);
-			n = is_julia(complex_r, complex_i);
-			put_color_on_pixel(param->data, x, y, n);
+			n = is_julia( \
+					j_calc_complex_num(x, WIDTH, param->pos_x, param->zoom), \
+					j_calc_complex_num(y, HEIGHT, param->pos_y, param->zoom), \
+					complex_r, complex_i);
+			j_put_color_on_pixel(param->data, x, y, n);
 			y++;
 		}
 		x++;
 	}
 }
-
-
-/*
-ref: https://complex-analysis.com/content/julia_set.html
-*/
