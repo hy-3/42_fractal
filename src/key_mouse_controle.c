@@ -14,7 +14,7 @@ int	key_hook(int keycode, t_param *param)
 		param->pos_y += AXIS_MOVE;
 	if (keycode == DOWN_KEY)
 		param->pos_y -= AXIS_MOVE;
-	create_mandelbrot_img(param);
+	create_fractol_img(param);
 	mlx_put_image_to_window(param->base->mlx, param->base->win, \
 							param->data->img, 0, 0);
 	return (0);
@@ -26,7 +26,7 @@ int	mouse_hook(int button, int x, int y, t_param *param)
 		param->zoom *= ZOOM_MOVE;
 	if (button == MOUSE_DOWN_KEY)
 		param->zoom /= ZOOM_MOVE;
-	create_mandelbrot_img(param);
+	create_fractol_img(param);
 	mlx_put_image_to_window(param->base->mlx, param->base->win, \
 							param->data->img, 0, 0);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:21 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/17 17:31:35 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:39:37 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct s_param
 	double	zoom;
 	int		pos_x;
 	int		pos_y;
+	int		set;
 }	t_param;
 
 int		key_hook(int keycode, t_param *param);
 int		mouse_hook(int button, int x, int y, t_param *param);
-void	create_mandelbrot_img(t_param *param);
-void	create_julia_img(t_param *param);
+void	create_fractol_img(t_param *param);
 
 #endif

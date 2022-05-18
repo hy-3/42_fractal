@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 11:56:38 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:41:47 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	calc_complex_num_x(double x, int axis_move, double zoom)
+double	scale_x(double x_win, int axis_move, double zoom)
 {
 	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (x - WIDTH / 2 + axis_move) * 4 / (WIDTH * zoom);
+		res = (x_win - WIDTH / 2 + axis_move) * 4 / (WIDTH * zoom);
 	else
-		res = (x - WIDTH / 2 + axis_move) * 4 / (HEIGHT * zoom);
+		res = (x_win - WIDTH / 2 + axis_move) * 4 / (HEIGHT * zoom);
 	return (res);
 }
 
-double	calc_complex_num_y(double y, int axis_move, double zoom)
+double	scale_y(double y_win, int axis_move, double zoom)
 {
 	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (y - HEIGHT / 2 + axis_move) * -4 / (WIDTH * zoom);
+		res = (y_win - HEIGHT / 2 + axis_move) * -4 / (WIDTH * zoom);
 	else
-		res = (y - HEIGHT / 2 + axis_move) * -4 / (HEIGHT * zoom);
+		res = (y_win - HEIGHT / 2 + axis_move) * -4 / (HEIGHT * zoom);
 	return (res);
 }
 
-int	is_mandelbrot(double complex_r, double complex_i)
+int	is_within_set(double x, double y, double complex_r, double complex_i)
 {
-	double	x;
-	double	y;
 	double	x_tmp;
 	int		n;
 
-	x = complex_r;
-	y = complex_i;
 	n = 0;
 	while ((x * x + y * y) <= 4 && n < (int)MAX_ITER)
 	{
@@ -70,28 +66,25 @@ void	put_color_on_pixel(t_data *data, double x, double y, int n)
 		my_mlx_pixel_put(data, x, y, OUTSIDE_COLOR);
 }
 
-void	create_mandelbrot_img(t_param *param)
+void	create_fractol_img(t_param *param)
 {
-	double	x;
-	double	y;
-	double	complex_r;
-	double	complex_i;
+	double	x_win;
+	double	y_win;
 	int		n;
 
-	x = 0;
-	complex_r = 0;
-	complex_i = 0;
-	while (x < WIDTH)
+	x_win = 0;
+	while (x_win < WIDTH)
 	{
-		y = 0;
-		while (y < HEIGHT)
+		y_win = 0;
+		while (y_win < HEIGHT)
 		{
-			complex_r = calc_complex_num_x(x, param->pos_x, param->zoom);
-			complex_i = calc_complex_num_y(y, param->pos_y, param->zoom);
-			n = is_mandelbrot(complex_r, complex_i);
-			put_color_on_pixel(param->data, x, y, n);
-			y++;
+			if (param->set == 0)
+				n = is_within_set(0, 0, scale_x(x_win, param->pos_x, param->zoom), scale_y(y_win, param->pos_y, param->zoom));
+			if (param->set == 1)
+				n = is_within_set(scale_x(x_win, param->pos_x, param->zoom), scale_y(y_win, param->pos_y, param->zoom), 0.3, 0.1);
+			put_color_on_pixel(param->data, x_win, y_win, n);
+			y_win++;
 		}
-		x++;
+		x_win++;
 	}
 }

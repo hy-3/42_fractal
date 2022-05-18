@@ -7,8 +7,7 @@ LIBFT = lib/libft/libft.a
 MIN_PATH = lib/minilibx_opengl_20191021/
 MIN = lib/minilibx_opengl_20191021/libmlx.a
 SRC = src/main.c \
-	  src/mandelbrot.c \
-	  src/julia.c \
+	  src/fractol.c \
 	  src/key_mouse_controle.c
 
 all: $(NAME)
