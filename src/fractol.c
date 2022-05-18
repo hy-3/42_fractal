@@ -6,31 +6,30 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 14:35:55 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:12:00 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	scale_x(double x_win, double axis_move, double zoom)
+double	scale(double axis, double axis_move, double zoom, int flag)
 {
 	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (x_win - WIDTH / 2) * 4 / (WIDTH * zoom) + axis_move;
+	{
+		if (flag == 0)
+			res = (axis - WIDTH / 2) * 4 / (WIDTH * zoom) + axis_move;
+		else if (flag == 1)
+			res = (axis - HEIGHT / 2) * -4 / (WIDTH * zoom) + axis_move;
+	}
 	else
-		res = (x_win - WIDTH / 2) * 4 / (HEIGHT * zoom) + axis_move;
-	return (res);
-}
-
-double	scale_y(double y_win, double axis_move, double zoom)
-{
-	double	res;
-
-	if (HEIGHT > WIDTH)
-		res = (y_win - HEIGHT / 2) * -4 / (WIDTH * zoom) + axis_move;
-	else
-		res = (y_win - HEIGHT / 2) * -4 / (HEIGHT * zoom) + axis_move;
+	{
+		if (flag == 0)
+			res = (axis - WIDTH / 2) * 4 / (HEIGHT * zoom) + axis_move;
+		else if (flag == 1)
+			res = (axis - HEIGHT / 2) * -4 / (HEIGHT * zoom) + axis_move;
+	}
 	return (res);
 }
 
@@ -58,7 +57,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	put_color_on_pixel(t_data *data, double x, double y, int n)
+void	put_color_on_pixel(t_data *data, int x, int y, int n)
 {
 	if (n == MAX_ITER)
 		my_mlx_pixel_put(data, x, y, INSIDE_COLOR);
@@ -78,10 +77,14 @@ void	create_fractol_img(t_param *param)
 		y_win = 0;
 		while (y_win < HEIGHT)
 		{
-			if (param->set == 0)
-				n = is_within_set(0, 0, scale_x(x_win, param->pos_x, param->zoom), scale_y(y_win, param->pos_y, param->zoom));
-			if (param->set == 1)
-				n = is_within_set(scale_x(x_win, param->pos_x, param->zoom), scale_y(y_win, param->pos_y, param->zoom), 0.3, 0.1);
+			if (param->type == 0)
+				n = is_within_set(0, 0, \
+								scale(x_win, param->pos_x, param->zoom, 0), \
+								scale(y_win, param->pos_y, param->zoom, 1));
+			else if (param->type == 1)
+				n = is_within_set(scale(x_win, param->pos_x, param->zoom, 0), \
+								scale(y_win, param->pos_y, param->zoom, 1), \
+								JULIA_COMPLEX_R, JULIA_COMPLEX_I);
 			put_color_on_pixel(param->data, x_win, y_win, n);
 			y_win++;
 		}
