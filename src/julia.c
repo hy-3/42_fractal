@@ -1,13 +1,24 @@
 #include "fractol.h"
 
-double	j_calc_complex_num(double axis, double side, int axis_move, double zoom)
+double	j_calc_complex_num_x(double x, int axis_move, double zoom)
 {
 	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (axis - side / 2 + axis_move) * 4 / (WIDTH * zoom);
+		res = (x - WIDTH / 2 + axis_move) * 4 / (WIDTH * zoom);
 	else
-		res = (axis - side / 2 + axis_move) * 4 / (HEIGHT * zoom);
+		res = (x - WIDTH / 2 + axis_move) * 4 / (HEIGHT * zoom);
+	return (res);
+}
+
+double	j_calc_complex_num_y(double y, int axis_move, double zoom)
+{
+	double	res;
+
+	if (HEIGHT > WIDTH)
+		res = (y - HEIGHT / 2 + axis_move) * -4 / (WIDTH * zoom);
+	else
+		res = (y - HEIGHT / 2 + axis_move) * -4 / (HEIGHT * zoom);
 	return (res);
 }
 
@@ -52,16 +63,16 @@ void	create_julia_img(t_param *param)
 	int		n;
 
 	x = 0;
-	complex_r = 0.318;
-	complex_i = 0.089;
+	complex_r = 0.3;
+	complex_i = 0.1;
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{
 			n = is_julia( \
-					j_calc_complex_num(x, WIDTH, param->pos_x, param->zoom), \
-					j_calc_complex_num(y, HEIGHT, param->pos_y, param->zoom), \
+					j_calc_complex_num_x(x, param->pos_x, param->zoom), \
+					j_calc_complex_num_y(y, param->pos_y, param->zoom), \
 					complex_r, complex_i);
 			j_put_color_on_pixel(param->data, x, y, n);
 			y++;
