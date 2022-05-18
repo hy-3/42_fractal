@@ -2,18 +2,20 @@
 
 int	key_hook(int keycode, t_param *param)
 {
-	if (keycode == ZOOMIN_KEY)
+	if (keycode == ESCAPE_KEY)
+		exit(0);
+	else if (keycode == ZOOMIN_KEY)
 		param->zoom *= ZOOM_MOVE;
-	if (keycode == ZOOMOUT_KEY)
+	else if (keycode == ZOOMOUT_KEY)
 		param->zoom /= ZOOM_MOVE;
-	if (keycode == LEFT_KEY)
-		param->pos_x -= AXIS_MOVE;
-	if (keycode == RIGHT_KEY)
-		param->pos_x += AXIS_MOVE;
-	if (keycode == UP_KEY)
-		param->pos_y += AXIS_MOVE;
-	if (keycode == DOWN_KEY)
-		param->pos_y -= AXIS_MOVE;
+	else if (keycode == LEFT_KEY)
+		param->pos_x -= AXIS_MOVE / param->zoom;
+	else if (keycode == RIGHT_KEY)
+		param->pos_x += AXIS_MOVE / param->zoom;
+	else if (keycode == UP_KEY)
+		param->pos_y += AXIS_MOVE / param->zoom;
+	else if (keycode == DOWN_KEY)
+		param->pos_y -= AXIS_MOVE / param->zoom;
 	create_fractol_img(param);
 	mlx_put_image_to_window(param->base->mlx, param->base->win, \
 							param->data->img, 0, 0);

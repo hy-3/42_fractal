@@ -6,31 +6,31 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 12:41:47 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:35:55 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	scale_x(double x_win, int axis_move, double zoom)
+double	scale_x(double x_win, double axis_move, double zoom)
 {
 	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (x_win - WIDTH / 2 + axis_move) * 4 / (WIDTH * zoom);
+		res = (x_win - WIDTH / 2) * 4 / (WIDTH * zoom) + axis_move;
 	else
-		res = (x_win - WIDTH / 2 + axis_move) * 4 / (HEIGHT * zoom);
+		res = (x_win - WIDTH / 2) * 4 / (HEIGHT * zoom) + axis_move;
 	return (res);
 }
 
-double	scale_y(double y_win, int axis_move, double zoom)
+double	scale_y(double y_win, double axis_move, double zoom)
 {
 	double	res;
 
 	if (HEIGHT > WIDTH)
-		res = (y_win - HEIGHT / 2 + axis_move) * -4 / (WIDTH * zoom);
+		res = (y_win - HEIGHT / 2) * -4 / (WIDTH * zoom) + axis_move;
 	else
-		res = (y_win - HEIGHT / 2 + axis_move) * -4 / (HEIGHT * zoom);
+		res = (y_win - HEIGHT / 2) * -4 / (HEIGHT * zoom) + axis_move;
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:21 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 12:39:37 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:33:55 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 # define WIDTH 600
 # define HEIGHT 600
-# define MAX_ITER 1000
+# define MAX_ITER 500
 # define INSIDE_COLOR 0x00000000
 # define OUTSIDE_COLOR 0x00FFFFFF
-# define AXIS_MOVE 10
+# define AXIS_MOVE 1
 # define ZOOM_MOVE 2
 # define ZOOMIN_KEY 34
 # define ZOOMOUT_KEY 31
@@ -31,6 +31,7 @@
 # define DOWN_KEY 125
 # define MOUSE_UP_KEY 4
 # define MOUSE_DOWN_KEY 5
+# define ESCAPE_KEY 53
 
 typedef struct s_data {
 	void	*img;
@@ -51,8 +52,8 @@ typedef struct s_param
 	t_base	*base;
 	t_data	*data;
 	double	zoom;
-	int		pos_x;
-	int		pos_y;
+	double	pos_x;
+	double	pos_y;
 	int		set;
 }	t_param;
 
