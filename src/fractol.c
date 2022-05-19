@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 15:12:00 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:33:34 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ double	scale(double axis, double axis_move, double zoom, int flag)
 	{
 		if (flag == 0)
 			res = (axis - WIDTH / 2) * 4 / (WIDTH * zoom) + axis_move;
-		else if (flag == 1)
+		else
 			res = (axis - HEIGHT / 2) * -4 / (WIDTH * zoom) + axis_move;
 	}
 	else
 	{
 		if (flag == 0)
 			res = (axis - WIDTH / 2) * 4 / (HEIGHT * zoom) + axis_move;
-		else if (flag == 1)
+		else
 			res = (axis - HEIGHT / 2) * -4 / (HEIGHT * zoom) + axis_move;
 	}
 	return (res);
@@ -79,12 +79,12 @@ void	create_fractol_img(t_param *param)
 		{
 			if (param->type == 0)
 				n = is_within_set(0, 0, \
-								scale(x_win, param->pos_x, param->zoom, 0), \
-								scale(y_win, param->pos_y, param->zoom, 1));
+							scale(x_win, param->pos_x, param->zoom, 0), \
+							scale(y_win, param->pos_y, param->zoom, 1));
 			else if (param->type == 1)
 				n = is_within_set(scale(x_win, param->pos_x, param->zoom, 0), \
-								scale(y_win, param->pos_y, param->zoom, 1), \
-								JULIA_COMPLEX_R, JULIA_COMPLEX_I);
+							scale(y_win, param->pos_y, param->zoom, 1), \
+							param->julia_complex_r, param->julia_complex_i);
 			put_color_on_pixel(param->data, x_win, y_win, n);
 			y_win++;
 		}

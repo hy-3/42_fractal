@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:21 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 15:12:30 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:27:11 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # define OUTSIDE_COLOR 0x00FFFFFF
 # define AXIS_MOVE 1
 # define ZOOM_MOVE 2
-# define JULIA_COMPLEX_R -0.7
-# define JULIA_COMPLEX_I -0.1
 
 typedef struct s_data {
 	void	*img;
@@ -48,7 +46,15 @@ typedef struct s_param
 	double	pos_x;
 	double	pos_y;
 	int		type;
+	double	julia_complex_i;
+	double	julia_complex_r;
 }	t_param;
+
+typedef struct s_args
+{
+	char	*arg1;
+	char	*arg2;
+}	t_args;
 
 int		key_hook(int keycode, t_param *param);
 int		mouse_hook(int button, int x, int y, t_param *param);

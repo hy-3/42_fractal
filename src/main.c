@@ -6,13 +6,38 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:40 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/18 15:12:56 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:44:33 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	start_mlx_with_fractol(char *str)
+void	set_julia_params(t_param *param, char *num)
+{
+	param->type = 1;
+	if (ft_strncmp(num, "1", 2) == 0)
+	{
+		param->julia_complex_r = 0;
+		param->julia_complex_i = 0;
+	}
+	else if (ft_strncmp(num, "2", 2) == 0)
+	{
+		param->julia_complex_r = -0.7;
+		param->julia_complex_i = -0.1;
+	}
+	else if (ft_strncmp(num, "3", 2) == 0)
+	{
+		param->julia_complex_r = -0.767679;
+		param->julia_complex_i = 0.001753;
+	}
+	else
+	{
+		ft_printf("Choose from 1 to 3 as a second parameter for Julia set\n");
+		exit(0);
+	}
+}
+
+void	start_mlx_with_fractol(t_args *args)
 {
 	t_base	base;
 	t_data	data;
@@ -25,10 +50,10 @@ void	start_mlx_with_fractol(char *str)
 	param.zoom = 1;
 	base.mlx = mlx_init();
 	base.win = mlx_new_window(base.mlx, WIDTH, HEIGHT, "fractol");
-	if (ft_strncmp(str, "mandelbrot", 11) == 0)
+	if (ft_strncmp(args->arg1, "mandelbrot", 11) == 0)
 		param.type = 0;
-	else if (ft_strncmp(str, "julia", 6) == 0)
-		param.type = 1;
+	else if (ft_strncmp(args->arg1, "julia", 6) == 0)
+		set_julia_params(&param, args->arg2);
 	data.img = mlx_new_image(base.mlx, WIDTH, HEIGHT);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, \
 									&data.line_length, &data.endian);
@@ -41,11 +66,23 @@ void	start_mlx_with_fractol(char *str)
 
 int	main(int argc, char *argv[])
 {
-	if (argc == 2)
+	t_args	args;
+
+	if (argc == 2 || argc == 3)
 	{
-		if (ft_strncmp(argv[1], "mandelbrot", 11) == 0 \
-				|| ft_strncmp(argv[1], "julia", 6) == 0)
-			start_mlx_with_fractol(argv[1]);
+		if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
+		{
+			args.arg1 = argv[1];
+			start_mlx_with_fractol(&args);
+		}
+		else if (ft_strncmp(argv[1], "julia", 6) == 0)
+		{
+			args.arg1 = argv[1];
+			args.arg2 = "1";
+			if (argc == 3)
+				args.arg2 = argv[2];
+			start_mlx_with_fractol(&args);
+		}
 		else
 			ft_printf("Error: Give a parameter 'mandelbrot' or 'julia'\n");
 	}
