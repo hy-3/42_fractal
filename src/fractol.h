@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:21 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/19 12:27:11 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:24:50 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 # include "../lib/minilibx_opengl_20191021/mlx.h"
 # include "../lib/libft/libft.h"
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 800
+# define HEIGHT 800
 # define MAX_ITER 500
-# define INSIDE_COLOR 0x00000000
-# define OUTSIDE_COLOR 0x00FFFFFF
 # define AXIS_MOVE 1
 # define ZOOM_MOVE 2
 
