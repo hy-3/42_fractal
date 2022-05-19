@@ -18,7 +18,7 @@ $(NAME): $(OBJ)
 	make -C $(MIN_PATH)
 	$(CC) $(OBJ) $(LIBFT) $(MIN) $(FLAGS) $(FRAMEWORK_FLAGS) -o $(NAME)
 
-%.o: %.clean
+%.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
