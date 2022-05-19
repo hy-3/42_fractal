@@ -68,7 +68,7 @@ int	main(int argc, char *argv[])
 {
 	t_args	args;
 
-	if (argc == 2 || argc == 3)
+	if (argc >= 2)
 	{
 		if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
 		{
@@ -79,7 +79,7 @@ int	main(int argc, char *argv[])
 		{
 			args.arg1 = argv[1];
 			args.arg2 = "1";
-			if (argc == 3)
+			if (argc >= 3)
 				args.arg2 = argv[2];
 			start_mlx_with_fractol(&args);
 		}
