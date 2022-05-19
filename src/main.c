@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:40 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/19 12:55:48 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:52:45 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	set_julia_params(t_param *param, char *num)
 	}
 	else if (ft_strncmp(num, "2", 2) == 0)
 	{
-		param->julia_complex_r = -0.7;
-		param->julia_complex_i = -0.1;
+		param->julia_complex_r = -0.759375;
+		param->julia_complex_i = 0.139826;
 	}
 	else if (ft_strncmp(num, "3", 2) == 0)
 	{

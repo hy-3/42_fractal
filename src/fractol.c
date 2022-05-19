@@ -6,7 +6,7 @@
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:43:46 by hiyamamo          #+#    #+#             */
-/*   Updated: 2022/05/19 13:24:14 by hiyamamo         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:50:46 by hiyamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	put_color_on_pixel(t_data *data, int x, int y, int n)
 	if (n == MAX_ITER)
 		my_mlx_pixel_put(data, x, y, 0x00000000);
 	else
-		my_mlx_pixel_put(data, x, y, 0x0000FFDD * n / MAX_ITER * 0.1);
+		my_mlx_pixel_put(data, x, y, 0x0000FFDD * (n + 1) / MAX_ITER * 0.1);
 }
 
 void	create_fractol_img(t_param *param)
