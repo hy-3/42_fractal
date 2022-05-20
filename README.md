@@ -1,9 +1,9 @@
 # Fractal
 
 ### Mandelbrot Set
-![Mandelbrot GIF](https://github.com/hy-3/fractal/gif/mandelbrot.gif)
+![(https://github.com/hy-3/fractal/gif/mandelbrot.gif)](https://github.com/hy-3/fractal/blob/master/gif/mandelbrot.gif)
 ### Julia Set
-![Julia GIF](https://github.com/hy-3/fractal/gif/julia.gif)
+![(https://github.com/hy-3/fractal/gif/julia.gif)](https://github.com/hy-3/fractal/blob/master/gif/julia.gif)
 
 
 
