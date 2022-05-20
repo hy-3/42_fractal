@@ -1,4 +1,8 @@
 # Fractal
+
+Create fractal images(Mandelbrot & Julia) with a graphical library(Minilibx).
+> A fractal is an abstract mathematical object, like a curve or a surface, which has a similar pattern whatever the scale.
+
 Mandelbrot             |  Julia
 :-------------------------:|:-------------------------:
 ![](https://github.com/hy-3/fractal/blob/master/gif/mandelbrot.gif)  |  ![](https://github.com/hy-3/fractal/blob/master/gif/julia.gif)
@@ -14,11 +18,12 @@ $ ./fractal mandelbrot
 $ ./fractal julia 1
 $ ./fractal julia 2
 $ ./fractal julia 3
-
 (You can choose 1 to 3 for different Julia set
  or You can just change fixed real number and imaginary number in source code)
 
->> Controle image <<
-* Once opening the graphical image, you can move around with arrow keys to go LEFT, RIGHT, UP and DOWN.
-* You can zoom in with 'i' and zoom out with 'o' character key.
+>> Key & Mouse controle <<
+[LEFT, RIGHT, UP and DOWN key]            : Move around in the image
+['i' character key or Mouse scroll up]    : Zoom in
+['o' character key or Mouse scroll down]  : Zoom out
+[ESC key]                                 : Close the window & Finish the program
 ```
