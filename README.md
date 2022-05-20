@@ -5,6 +5,10 @@
 ### Julia Set
 ![(https://github.com/hy-3/fractal/gif/julia.gif)](https://github.com/hy-3/fractal/blob/master/gif/julia.gif)
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://github.com/hy-3/fractal/blob/master/gif/mandelbrot.gif)  |  ![](https://github.com/hy-3/fractal/blob/master/gif/julia.gif)
+
 
 
 ## Usage
