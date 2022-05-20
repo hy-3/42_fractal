@@ -1,4 +1,4 @@
-NAME = fractol
+NAME = fractal
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 FRAMEWORK_FLAGS = -framework OpenGL -framework AppKit
@@ -7,7 +7,7 @@ LIBFT = lib/libft/libft.a
 MIN_PATH = lib/minilibx_opengl_20191021/
 MIN = lib/minilibx_opengl_20191021/libmlx.a
 SRC = src/main.c \
-	  src/fractol.c \
+	  src/fractal.c \
 	  src/key_mouse_controle.c
 OBJ = $(SRC:%.c=%.o)
 

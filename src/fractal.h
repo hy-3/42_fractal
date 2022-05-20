@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractal.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTAL_H
+# define FRACTAL_H
 
 # include "../lib/minilibx_opengl_20191021/mlx.h"
 # include "../lib/libft/libft.h"
@@ -20,7 +20,7 @@
 # define HEIGHT 800
 # define MAX_ITER 500
 # define AXIS_MOVE 1
-# define ZOOM_MOVE 2
+# define ZOOM_MOVE 1.5
 
 typedef struct s_data {
 	void	*img;
@@ -56,6 +56,6 @@ typedef struct s_args
 
 int		key_hook(int keycode, t_param *param);
 int		mouse_hook(int button, int x, int y, t_param *param);
-void	create_fractol_img(t_param *param);
+void	create_fractal_img(t_param *param);
 
 #endif

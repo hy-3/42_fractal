@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
 void	set_julia_params(t_param *param, char *num)
 {
 	param->type = 1;
 	if (ft_strncmp(num, "1", 2) == 0)
 	{
-		param->julia_complex_r = 0;
-		param->julia_complex_i = 0;
+		param->julia_complex_r = -0.5902805611222446;
+		param->julia_complex_i = 0.47850388276553113;
 	}
 	else if (ft_strncmp(num, "2", 2) == 0)
 	{
@@ -37,7 +37,7 @@ void	set_julia_params(t_param *param, char *num)
 	}
 }
 
-void	start_mlx_with_fractol(t_args *args)
+void	start_mlx_with_fractal(t_args *args)
 {
 	t_base	base;
 	t_data	data;
@@ -49,7 +49,7 @@ void	start_mlx_with_fractol(t_args *args)
 	param.pos_y = 0;
 	param.zoom = 1;
 	base.mlx = mlx_init();
-	base.win = mlx_new_window(base.mlx, WIDTH, HEIGHT, "fractol");
+	base.win = mlx_new_window(base.mlx, WIDTH, HEIGHT, "fractal");
 	if (ft_strncmp(args->arg1, "mandelbrot", 11) == 0)
 		param.type = 0;
 	else if (ft_strncmp(args->arg1, "julia", 6) == 0)
@@ -57,7 +57,7 @@ void	start_mlx_with_fractol(t_args *args)
 	data.img = mlx_new_image(base.mlx, WIDTH, HEIGHT);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, \
 									&data.line_length, &data.endian);
-	create_fractol_img(&param);
+	create_fractal_img(&param);
 	mlx_put_image_to_window(base.mlx, base.win, data.img, 0, 0);
 	mlx_key_hook(base.win, key_hook, &param);
 	mlx_mouse_hook(base.win, mouse_hook, &param);
@@ -73,7 +73,7 @@ int	main(int argc, char *argv[])
 		if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
 		{
 			args.arg1 = argv[1];
-			start_mlx_with_fractol(&args);
+			start_mlx_with_fractal(&args);
 		}
 		else if (ft_strncmp(argv[1], "julia", 6) == 0)
 		{
@@ -81,7 +81,7 @@ int	main(int argc, char *argv[])
 			args.arg2 = "1";
 			if (argc >= 3)
 				args.arg2 = argv[2];
-			start_mlx_with_fractol(&args);
+			start_mlx_with_fractal(&args);
 		}
 		else
 			ft_printf("Error: Give a parameter 'mandelbrot' or 'julia'\n");

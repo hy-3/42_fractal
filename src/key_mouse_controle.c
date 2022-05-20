@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
 int	key_hook(int keycode, t_param *param)
 {
@@ -28,7 +28,7 @@ int	key_hook(int keycode, t_param *param)
 		param->pos_y += AXIS_MOVE / param->zoom;
 	else if (keycode == 125)
 		param->pos_y -= AXIS_MOVE / param->zoom;
-	create_fractol_img(param);
+	create_fractal_img(param);
 	mlx_put_image_to_window(param->base->mlx, param->base->win, \
 							param->data->img, 0, 0);
 	return (0);
@@ -42,7 +42,7 @@ int	mouse_hook(int button, int x, int y, t_param *param)
 		param->zoom *= ZOOM_MOVE;
 	if (button == 5)
 		param->zoom /= ZOOM_MOVE;
-	create_fractol_img(param);
+	create_fractal_img(param);
 	mlx_put_image_to_window(param->base->mlx, param->base->win, \
 							param->data->img, x, y);
 	return (0);

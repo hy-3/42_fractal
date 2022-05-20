@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   fractal.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiyamamo <hiyamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractal.h"
 
 double	scale(double axis, double axis_move, double zoom, int flag)
 {
@@ -65,7 +65,7 @@ void	put_color_on_pixel(t_data *data, int x, int y, int n)
 		my_mlx_pixel_put(data, x, y, 0x0000FFDD * (n + 1) / MAX_ITER * 0.1);
 }
 
-void	create_fractol_img(t_param *param)
+void	create_fractal_img(t_param *param)
 {
 	double	x_win;
 	double	y_win;
