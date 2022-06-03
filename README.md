@@ -22,8 +22,8 @@ $ ./fractal julia 3
  or You can just change fixed real number and imaginary number in source code)
 
 >> Key & Mouse controle <<
-[LEFT, RIGHT, UP and DOWN key]            : Move around in the image
-['i' character key or Mouse scroll up]    : Zoom in
-['o' character key or Mouse scroll down]  : Zoom out
-[ESC key]                                 : Close the window & Finish the program
+[LEFT, RIGHT, UP and DOWN key]           : Move around in the image
+['i' character key or Mouse scroll up]   : Zoom in
+['o' character key or Mouse scroll down] : Zoom out
+[ESC key]                                : Close the window & Finish the program
 ```
