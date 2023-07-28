@@ -7,6 +7,9 @@ Mandelbrot             |  Julia
 :-------------------------:|:-------------------------:
 ![](https://github.com/hy-3/fractal/blob/master/gif/mandelbrot.gif)  |  ![](https://github.com/hy-3/fractal/blob/master/gif/julia.gif)
 
+## Overview
+You can check the subject [here](https://github.com/hy-3/42_fractal/blob/master/fractal.pdf)
+
 ## Usage
 ```
 $ make
